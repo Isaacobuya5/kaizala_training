@@ -21,8 +21,14 @@ router.post("/customer", async (req, res) => {
 // get all customers
 router.get("/customers", async (req, res) => {
   try {
-    const customers = await Customer.find({});
-    res.status(200).send({ customers });
+    if (req.query && req.query.phone) {
+      // find user with the given phone number
+      const existingUser = await Customer.find({ phone: req.query.phone });
+      return res.status(200).send(existingUser);
+    } else {
+      const customers = await Customer.find({});
+      res.status(200).send({ customers });
+    }
   } catch (error) {
     res.status(404).send(error);
   }
