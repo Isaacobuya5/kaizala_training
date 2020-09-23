@@ -1,3 +1,4 @@
+
 const express = require("express");
 
 const Customer = require("../model/customer");
@@ -7,7 +8,6 @@ const router = express.Router();
 
 // create a new customer
 router.post("/customer", async (req, res) => {
-  console.log(req.body);
   const customer = new Customer(req.body);
   try {
     const newCustomer = await customer.save();

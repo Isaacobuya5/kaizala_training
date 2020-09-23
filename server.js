@@ -2,6 +2,8 @@ const express = require('express');
 const bodyParser = require("body-parser");
 const logger = require('morgan');
 const Customer = require("./model/customer");
+
+require('dotenv').config();
 require('./db/mongoose');
 const customerRouter = require("./routers/customer");
 
